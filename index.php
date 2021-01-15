@@ -11,3 +11,4 @@ if (isset($_SESSION["usuarioDAW2LoginLogoffMulticapaPOO"])){
 } else {
     require_once $controladores["login"];
 }
+?>

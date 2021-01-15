@@ -9,10 +9,11 @@
 
     //CONFIGURACIÓN ENTORNO DE DESARROLLO
     /*
-    define('DNS', 'mysql:host=192.168.20.19;dbname=DAW215DBProyectoTema5;charset=utf8');//Dirección IP y nombre de la base de datos
+    define('DNS', 'mysql:host=192.168.20.19;dbname=DAW215DBProyectoTema5');//Dirección IP y nombre de la base de datos
     define('USER', 'usuarioDAW215DBProyectoTema5');//Nombre de usuario de la base de datos
-    define('PASSWORD', 'P@ssw0rd');//Contraseña del usuario de la base de datos
-   */
+    define('PASSWORD', 'Passw0rd');//Contraseña del usuario de la base de datos
+    */
+   
 
     //CONFIGURACIÓN 1&1
    
