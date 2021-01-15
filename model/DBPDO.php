@@ -10,9 +10,9 @@ class DBPDO {
             $consulta->execute($parametros); //Ejecutamos la consulta.
         } catch (PDOException $exception) {
             $consulta = null; //Destruimos la consulta.
-            echo $exception->getMessage();
-            unset($miDB);
+            echo $exception->getMessage();//Mostramos el mensaje de error de la excepcion
+            unset($miDB);//Cerramos la conexion de la base de datos
         }
-        return $consulta;
+        return $consulta;//Devolvemos la consulta
     }
 }

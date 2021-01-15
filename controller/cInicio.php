@@ -1,9 +1,5 @@
 <?php
-/**
- *   @author: Javier Nieto Lorenzo
- *   @since: 02/12/2020
- *   Programa
-*/
+
 if(!isset($_SESSION['usuarioDAW2LoginLogoffMulticapaPOO'])){ // si no se ha logueado le usuario
     header('Location: index.php'); // redirige al login
     exit;
@@ -14,14 +10,14 @@ if (isset($_REQUEST['cerrarSesion'])) { // si se ha pulsado el boton de Cerrar S
     header("Location: index.php"); // redirige al login
     exit;
 }
-$oUsuarioControlador = $_SESSION['usuarioDAW2LoginLogoffMulticapaPOO'];
+$oUsuarioActual = $_SESSION['usuarioDAW2LoginLogoffMulticapaPOO'];
 
-$numConexiones = $oUsuarioControlador->getNumConexiones(); // variable que tiene el numero de conexiones sacado de la base de datos
-$descUsuario = $_SESSION['usuarioDAW2LoginLogoffMulticapaPOO']->getDescUsuario(); // variable que tiene la descripcion del usuario sacado de la base de datos
-$ultimaConexion = $_SESSION['usuarioDAW2LoginLogoffMulticapaPOO']->getFechaHoraUltimaConexion();
-$imagenUsuario = $_SESSION['usuarioDAW2LoginLogoffMulticapaPOO']->getImagenPerfil();
+$numConexiones = $oUsuarioActual->getNumConexiones(); // variable que tiene el numero de conexiones sacado de la base de datos
+$descUsuario = $oUsuarioActual->getDescUsuario(); // variable que tiene la descripcion del usuario sacado de la base de datos
+$ultimaConexion = $oUsuarioActual->getFechaHoraUltimaConexion();// variable que tiene la fecha y hora de la ultima conexion
+$imagenUsuario = $oUsuarioActual->getImagenPerfil();// variable que tiene la imagen del usuario
 
-$vista = $vistas['inicio'];
-require_once $vistas['layout'];
+$vistaEnCurso = $vistas['inicio'];// asignamos a la variable vistaEnCurso la vista del inicio
+require_once $vistas['layout'];// cargamos el layout
 
 ?>

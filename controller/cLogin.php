@@ -1,9 +1,5 @@
 <?php
-/**
- *   @author: Javier Nieto Lorenzo
- *   @since: 02/12/2020
- *   cInicio
- */
+
 if(!isset($_COOKIE['idioma'])){
     setcookie('idioma','es',time()+2592000); // crea la cookie 'idioma' con el valor 'es' para 30 dias
     header('Location: index.php');
@@ -30,33 +26,32 @@ if (isset($_REQUEST["IniciarSesion"])) { // comprueba que el usuario le ha dado 
     $aErrores['CodUsuario'] = validacionFormularios::comprobarAlfaNumerico($_REQUEST['CodUsuario'], 15, 3, OBLIGATORIO); // comprueba que la entrada del codigo de usuario es correcta
 
     $aErrores['Password'] = validacionFormularios::validarPassword($_REQUEST['Password'], 8, 1, 1, OBLIGATORIO);// comprueba que la entrada del password es correcta
-
-    if ($aErrores['CodUsuario'] != null || $aErrores['Password']!=null) { // compruebo si hay algun mensaje de error en algun campo
-        $entradaOK = false; // le doy el valor false a $entradaOK
-        unset($_REQUEST);
+    
+    $oUsuario = UsuarioPDO::validarUsuario($_REQUEST['CodUsuario'], $_REQUEST['Password']);// validamos que el usuario introducido y la contraseña son correctos
+    
+    if(!isset($oUsuario)){// Si el codUsuario y password no existen
+        $aErrores['CodUsuario'] = "Error de autentificacion";// Asignamos un error a uno de los campos para limpiarlos posteriormente
     }
+    
+    foreach ($aErrores as $campo => $error){
+        if ($error != null && $entradaOK) {
+            $entradaOK = false; // En caso de que haya algún error le asignamos a entradaOK el valor false para que vuelva a rellenar el formulario
+            unset($_REQUEST); // Limpiamos los campos del formulario
+        }
+    }
+    
 } else { // si el usuario no le ha dado al boton de enviar
     $entradaOK = false; // le doy el valor false a $entradaOK
 }
 
 if ($entradaOK) { // si la entrada esta bien recojo los valores introducidos y hago su tratamiento
-    $usuario = $_REQUEST['CodUsuario'];
-    $password = $_REQUEST['Password'];
 
-    $oUsuario = UsuarioPDO::validarUsuario($usuario, $password);
-    if(isset($oUsuario)){ // si encuentra el usuario con el codigo de usuario y el password introducido
+    $_SESSION['usuarioDAW2LoginLogoffMulticapaPOO'] = $oUsuario; // guarda en la session el objeto usuario
 
-        $_SESSION['usuarioDAW2LoginLogoffMulticapaPOO'] = $oUsuario; // guarda en la session el objeto usuario
-
-
-        UsuarioPDO::actualizarUltimaConexion($oUsuario->getCodUsuario());
-
-        header('Location: index.php');
-        exit;
-
-    }
+    header('Location: index.php');
+    exit;
 }
 
-$vista = $vistas['login'];
-require_once $vistas['layout'];
-?> 
+$vistaEnCurso = $vistas['login']; // asignamos a la variable vistaEnCurso la vista del login
+require_once $vistas['layout']; // cargamos el layout
+?>
