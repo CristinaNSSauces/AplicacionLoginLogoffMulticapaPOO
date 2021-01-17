@@ -17,7 +17,11 @@ $aLang = [
         'numConnectionsWelcome' => 'Esta es la primera vez que se conecta',  
         'lastConnection' => 'Ultima conexion: '.(isset($usuarioActual) ? date('d/m/Y H:i:s',$usuarioActual->getFechaHoraUltimaConexion()) : null),
         'details' => 'Detalle',
-        'editProfile' => 'Editar Perfil'
+        'editProfile' => 'Editar Perfil',
+
+        'description' => 'Descripcion',
+        'confirmPassword' => 'Confirmar contraseña',
+        'cancel' => 'Cancelar'
     ],
 
     'en' => [
@@ -33,7 +37,11 @@ $aLang = [
         'numConnectionsWelcome' => 'This is the first time you connect',  
         'lastConnection' => 'Last connection: '.(isset($usuarioActual) ? date('d/m/Y H:i:s',$usuarioActual->getFechaHoraUltimaConexion()) : null),
         'details' => 'Detail',
-        'editProfile' => 'Edit Profile' 
+        'editProfile' => 'Edit Profile',
+
+        'description' => 'Description',
+        'confirmPassword' => 'Confirm password',
+        'cancel' => 'Cancel'
     ]
 ];
 ?>
