@@ -13,10 +13,11 @@
 
             <?php require_once $vistaEnCurso ?>
 
-            <footer class="fixed">
+        <footer class="fixed">
                 <a href="http://daw215.ieslossauces.es/" target="_blank"> <img src="webroot/media/oneandone.png" alt="oneandone icon" width="40"></a>
                 <address>  <a href="../../index.html">&copy; 2020-2021 Cristina Núñez Sebastián</a> </address>
+                <a href="doc/index.html" target="_blank"><img class="github" width="40" src="webroot/media/doc.png" ></a>
                 <a href="https://github.com/CristinaNSSauces/" target="_blank"><img class="github" width="40" src="webroot/media/github.png" ></a>
-            </footer>
-        </body>
+        </footer>
+    </body>
 </html>

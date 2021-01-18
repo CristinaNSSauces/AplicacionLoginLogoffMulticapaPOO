@@ -14,10 +14,10 @@ $oUsuarioActual = $_SESSION['usuarioDAW2LoginLogoffMulticapaPOO'];
 
 $numConexiones = $oUsuarioActual->getNumConexiones(); // variable que tiene el numero de conexiones sacado de la base de datos
 $descUsuario = $oUsuarioActual->getDescUsuario(); // variable que tiene la descripcion del usuario sacado de la base de datos
-$ultimaConexion = $oUsuarioActual->getFechaHoraUltimaConexion();// variable que tiene la fecha y hora de la ultima conexion
-$imagenUsuario = $oUsuarioActual->getImagenPerfil();// variable que tiene la imagen del usuario
+$ultimaConexion = $oUsuarioActual->getFechaHoraUltimaConexion(); // variable que tiene la ultima hora de conexion del usuario
+$imagenUsuario = $oUsuarioActual->getImagenPerfil(); // variable que tiene la imagen de perfil del usuario
 
-$vistaEnCurso = $vistas['inicio'];// asignamos a la variable vistaEnCurso la vista del inicio
-require_once $vistas['layout'];// cargamos el layout
+$vistaEnCurso = $vistas['inicio']; // guardamos en la variable vistaEnCurso la vista que queremos implementar
+require_once $vistas['layout'];
 
 ?>
